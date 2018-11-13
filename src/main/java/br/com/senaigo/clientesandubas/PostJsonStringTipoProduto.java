@@ -4,20 +4,20 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
-import br.com.senaigo.clientesandubas.model.ClassificacaoMercadoria;
+import br.com.senaigo.clientesandubas.model.TipoProduto;
 
-public class PostJsonString2 {
+public class PostJsonStringTipoProduto {
 
 	public static void main(String[] args) {
 
 		Client client = Client.create();
 
-		WebResource webResource = client.resource("http://localhost:8080/classificacaomercadoria");
+		WebResource webResource = client.resource("http://localhost:8080/tipoproduto");
 
 		// Data send to web service.
-		ClassificacaoMercadoria objeto = new ClassificacaoMercadoria(new Long(8), "teste nome", "Teste descricao");
+		TipoProduto objeto = new TipoProduto(new Long(0), "teste nome", "Teste descricao");
 
-		ClientResponse response = webResource.type("application/json").put(ClientResponse.class, objeto);
+		ClientResponse response = webResource.type("application/json").post(ClientResponse.class, objeto);
 
 		if (response.getStatus() != 200) {
 			System.out.println("Failed : HTTP error code : " + response.getStatus());
