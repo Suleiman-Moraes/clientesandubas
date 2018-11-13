@@ -14,7 +14,7 @@ public class DeleteObject {
 		// Create Client based on Config
 		Client client = Client.create(clientConfig);
 
-		WebResource webResource = client.resource("http://localhost:8080/classificacaomercadoria/9");
+		WebResource webResource = client.resource("http://localhost:8888/classificacaomercadoria/9");
 
 		ClientResponse rs = webResource.accept("application/json").type("application/json")
 				.delete(ClientResponse.class);

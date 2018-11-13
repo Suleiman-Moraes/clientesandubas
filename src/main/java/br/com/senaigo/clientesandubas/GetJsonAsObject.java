@@ -20,7 +20,7 @@ public class GetJsonAsObject {
 		// Create Client based on Config
 		Client client = Client.create(clientConfig);
 
-		WebResource webResource = client.resource("http://localhost:8080/classificacaomercadoria/3");
+		WebResource webResource = client.resource("http://localhost:8888/classificacaomercadoria/3");
 
 		Builder builder = webResource.accept(MediaType.APPLICATION_JSON) //
 				.header("content-type", MediaType.APPLICATION_JSON);

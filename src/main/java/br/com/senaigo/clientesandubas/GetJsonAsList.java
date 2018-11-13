@@ -23,7 +23,7 @@ public class GetJsonAsList {
 		// Create Client based on Config
 		Client client = Client.create(clientConfig);
 
-		WebResource webResource = client.resource("http://localhost:8080/listaclassificacaomercadoria");
+		WebResource webResource = client.resource("http://localhost:8888/listaclassificacaomercadoria");
 
 		Builder builder = webResource.accept(MediaType.APPLICATION_JSON) //
 				.header("content-type", MediaType.APPLICATION_JSON);

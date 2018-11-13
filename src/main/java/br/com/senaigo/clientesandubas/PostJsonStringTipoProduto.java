@@ -12,7 +12,7 @@ public class PostJsonStringTipoProduto {
 
 		Client client = Client.create();
 
-		WebResource webResource = client.resource("http://localhost:8080/tipoproduto");
+		WebResource webResource = client.resource("http://localhost:8888/tipoproduto");
 
 		// Data send to web service.
 		TipoProduto objeto = new TipoProduto(new Long(0), "teste nome", "Teste descricao");

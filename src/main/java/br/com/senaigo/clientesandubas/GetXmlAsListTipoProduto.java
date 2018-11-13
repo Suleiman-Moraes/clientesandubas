@@ -23,7 +23,7 @@ public class GetXmlAsListTipoProduto {
 		// Create Client based on Config
 		Client client = Client.create(clientConfig);
 
-		WebResource webResource = client.resource("http://localhost:8080/listatipoproduto");
+		WebResource webResource = client.resource("http://localhost:8888/listatipoproduto");
 
 		Builder builder = webResource.accept(MediaType.APPLICATION_XML) //
 				.header("content-type", MediaType.APPLICATION_XML);

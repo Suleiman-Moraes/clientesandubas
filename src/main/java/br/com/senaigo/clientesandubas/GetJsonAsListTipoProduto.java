@@ -12,7 +12,6 @@ import com.sun.jersey.api.client.WebResource.Builder;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 
-import br.com.senaigo.clientesandubas.model.ClassificacaoMercadoria;
 import br.com.senaigo.clientesandubas.model.TipoProduto;
 
 public class GetJsonAsListTipoProduto {
