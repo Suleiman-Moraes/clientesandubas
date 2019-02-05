@@ -1,12 +1,9 @@
-package br.com.senaigo.clientesandubas;
-
-import java.util.List;
+package br.com.senaigo.clientesandubas.testecomum;
 
 import javax.ws.rs.core.MediaType;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
-import com.sun.jersey.api.client.GenericType;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.WebResource.Builder;
 import com.sun.jersey.api.client.config.ClientConfig;
@@ -14,7 +11,7 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
 
 import br.com.senaigo.clientesandubas.model.ClassificacaoMercadoria;
 
-public class GetXmlAsList {
+public class GetJsonAsObject {
 
 	public static void main(String[] args) {
 
@@ -23,10 +20,10 @@ public class GetXmlAsList {
 		// Create Client based on Config
 		Client client = Client.create(clientConfig);
 
-		WebResource webResource = client.resource("http://localhost:8888/listaclassificacaomercadoria");
+		WebResource webResource = client.resource("http://localhost:8888/classificacaomercadoria/3");
 
-		Builder builder = webResource.accept(MediaType.APPLICATION_XML) //
-				.header("content-type", MediaType.APPLICATION_XML);
+		Builder builder = webResource.accept(MediaType.APPLICATION_JSON) //
+				.header("content-type", MediaType.APPLICATION_JSON);
 
 		ClientResponse response = builder.get(ClientResponse.class);
 
@@ -38,20 +35,13 @@ public class GetXmlAsList {
 			return;
 		}
 
-		GenericType<List<ClassificacaoMercadoria>> generic = new GenericType<List<ClassificacaoMercadoria>>() {
-			// No thing
-		};
-
-		List<ClassificacaoMercadoria> list = response.getEntity(generic);
-
 		System.out.println("Output from Server .... \n");
 
-		for (ClassificacaoMercadoria emp : list) {
-			System.out.println(" --- ");
-			System.out.println("Id .... " + emp.getId());
-			System.out.println("Nome .... " + emp.getNome());
-			System.out.println("Descricao .... " + emp.getDescricao());
-		}
+		ClassificacaoMercadoria employee = (ClassificacaoMercadoria) response.getEntity(ClassificacaoMercadoria.class);
+
+		System.out.println("Id .... " + employee.getId());
+		System.out.println("Nome .... " + employee.getNome());
+		System.out.println("Descricao .... " + employee.getDescricao());
 
 	}
 

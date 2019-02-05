@@ -1,4 +1,4 @@
-package br.com.senaigo.clientesandubas;
+package br.com.senaigo.clientesandubas.testecomum;
 
 import java.util.List;
 
@@ -12,9 +12,9 @@ import com.sun.jersey.api.client.WebResource.Builder;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 
-import br.com.senaigo.clientesandubas.model.ClassificacaoMercadoria;
+import br.com.senaigo.clientesandubas.model.TipoProduto;
 
-public class GetJsonAsList {
+public class GetXmlAsListTipoProduto {
 
 	public static void main(String[] args) {
 
@@ -23,10 +23,10 @@ public class GetJsonAsList {
 		// Create Client based on Config
 		Client client = Client.create(clientConfig);
 
-		WebResource webResource = client.resource("http://localhost:8888/listaclassificacaomercadoria");
+		WebResource webResource = client.resource("http://localhost:8888/listatipoproduto");
 
-		Builder builder = webResource.accept(MediaType.APPLICATION_JSON) //
-				.header("content-type", MediaType.APPLICATION_JSON);
+		Builder builder = webResource.accept(MediaType.APPLICATION_XML) //
+				.header("content-type", MediaType.APPLICATION_XML);
 
 		ClientResponse response = builder.get(ClientResponse.class);
 
@@ -38,15 +38,15 @@ public class GetJsonAsList {
 			return;
 		}
 
-		GenericType<List<ClassificacaoMercadoria>> generic = new GenericType<List<ClassificacaoMercadoria>>() {
+		GenericType<List<TipoProduto>> generic = new GenericType<List<TipoProduto>>() {
 			// No thing
 		};
 
-		List<ClassificacaoMercadoria> list = response.getEntity(generic);
+		List<TipoProduto> list = response.getEntity(generic);
 
 		System.out.println("Output from Server .... \n");
 
-		for (ClassificacaoMercadoria emp : list) {
+		for (TipoProduto emp : list) {
 			System.out.println(" --- ");
 			System.out.println("Id .... " + emp.getId());
 			System.out.println("Nome .... " + emp.getNome());

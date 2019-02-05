@@ -1,21 +1,21 @@
-package br.com.senaigo.clientesandubas;
+package br.com.senaigo.clientesandubas.testecomum;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
-import br.com.senaigo.clientesandubas.model.ClassificacaoMercadoria;
+import br.com.senaigo.clientesandubas.model.TipoProduto;
 
-public class PostJsonString {
+public class PostJsonStringTipoProduto {
 
 	public static void main(String[] args) {
 
 		Client client = Client.create();
 
-		WebResource webResource = client.resource("http://localhost:8888/classificacaomercadoria");
+		WebResource webResource = client.resource("http://localhost:8888/tipoproduto");
 
 		// Data send to web service.
-		ClassificacaoMercadoria objeto = new ClassificacaoMercadoria(new Long(0), "teste nome", "Teste descricao");
+		TipoProduto objeto = new TipoProduto(new Long(0), "teste nome", "Teste descricao");
 
 		ClientResponse response = webResource.type("application/json").post(ClientResponse.class, objeto);
 

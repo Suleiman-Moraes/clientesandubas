@@ -1,4 +1,4 @@
-package br.com.senaigo.clientesandubas;
+package br.com.senaigo.clientesandubas.testecomum;
 
 import java.util.List;
 

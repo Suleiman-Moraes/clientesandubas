@@ -1,4 +1,4 @@
-package br.com.senaigo.clientesandubas;
+package br.com.senaigo.clientesandubas.testecomum;
 
 import javax.ws.rs.core.MediaType;
 
@@ -9,9 +9,9 @@ import com.sun.jersey.api.client.WebResource.Builder;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 
-import br.com.senaigo.clientesandubas.model.ClassificacaoMercadoria;
+import br.com.senaigo.clientesandubas.model.TipoProduto;
 
-public class GetJsonAsObject {
+public class GetJsonAsObjectTipoproduto {
 
 	public static void main(String[] args) {
 
@@ -20,7 +20,7 @@ public class GetJsonAsObject {
 		// Create Client based on Config
 		Client client = Client.create(clientConfig);
 
-		WebResource webResource = client.resource("http://localhost:8888/classificacaomercadoria/3");
+		WebResource webResource = client.resource("http://localhost:8888/tipoproduto/3");
 
 		Builder builder = webResource.accept(MediaType.APPLICATION_JSON) //
 				.header("content-type", MediaType.APPLICATION_JSON);
@@ -37,7 +37,7 @@ public class GetJsonAsObject {
 
 		System.out.println("Output from Server .... \n");
 
-		ClassificacaoMercadoria employee = (ClassificacaoMercadoria) response.getEntity(ClassificacaoMercadoria.class);
+		TipoProduto employee = (TipoProduto) response.getEntity(TipoProduto.class);
 
 		System.out.println("Id .... " + employee.getId());
 		System.out.println("Nome .... " + employee.getNome());

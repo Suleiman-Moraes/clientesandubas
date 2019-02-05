@@ -1,4 +1,4 @@
-package br.com.senaigo.clientesandubas;
+package br.com.senaigo.clientesandubas.testecomum;
 
 import java.util.List;
 
@@ -12,9 +12,9 @@ import com.sun.jersey.api.client.WebResource.Builder;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 
-import br.com.senaigo.clientesandubas.model.TipoProduto;
+import br.com.senaigo.clientesandubas.model.ClassificacaoMercadoria;
 
-public class GetXmlAsListTipoProduto {
+public class GetXmlAsList {
 
 	public static void main(String[] args) {
 
@@ -23,7 +23,7 @@ public class GetXmlAsListTipoProduto {
 		// Create Client based on Config
 		Client client = Client.create(clientConfig);
 
-		WebResource webResource = client.resource("http://localhost:8888/listatipoproduto");
+		WebResource webResource = client.resource("http://localhost:8888/listaclassificacaomercadoria");
 
 		Builder builder = webResource.accept(MediaType.APPLICATION_XML) //
 				.header("content-type", MediaType.APPLICATION_XML);
@@ -38,15 +38,15 @@ public class GetXmlAsListTipoProduto {
 			return;
 		}
 
-		GenericType<List<TipoProduto>> generic = new GenericType<List<TipoProduto>>() {
+		GenericType<List<ClassificacaoMercadoria>> generic = new GenericType<List<ClassificacaoMercadoria>>() {
 			// No thing
 		};
 
-		List<TipoProduto> list = response.getEntity(generic);
+		List<ClassificacaoMercadoria> list = response.getEntity(generic);
 
 		System.out.println("Output from Server .... \n");
 
-		for (TipoProduto emp : list) {
+		for (ClassificacaoMercadoria emp : list) {
 			System.out.println(" --- ");
 			System.out.println("Id .... " + emp.getId());
 			System.out.println("Nome .... " + emp.getNome());

@@ -1,21 +1,21 @@
-package br.com.senaigo.clientesandubas;
+package br.com.senaigo.clientesandubas.testecomum;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
-import br.com.senaigo.clientesandubas.model.TipoProduto;
+import br.com.senaigo.clientesandubas.model.ClassificacaoMercadoria;
 
-public class PutJsonUpdateTipoProduto {
+public class PutJsonUpdate {
 
 	public static void main(String[] args) {
 
 		Client client = Client.create();
 
-		WebResource webResource = client.resource("http://localhost:8080/tipoproduto");
+		WebResource webResource = client.resource("http://localhost:8080/classificacaomercadoria");
 
 		// Data send to web service.
-		TipoProduto objeto = new TipoProduto(new Long(10), "teste nomex", "Teste descricao");
+		ClassificacaoMercadoria objeto = new ClassificacaoMercadoria(new Long(10), "teste nomex", "Teste descricao");
 
 		ClientResponse response = webResource.type("application/json").put(ClientResponse.class, objeto);
 
@@ -29,7 +29,7 @@ public class PutJsonUpdateTipoProduto {
 
 		System.out.println("Output from Server .... \n");
 
-		TipoProduto output = response.getEntity(TipoProduto.class);
+		ClassificacaoMercadoria output = response.getEntity(ClassificacaoMercadoria.class);
 
 		System.out.println(output.getNome()+ " ### " + output.getDescricao());
 
