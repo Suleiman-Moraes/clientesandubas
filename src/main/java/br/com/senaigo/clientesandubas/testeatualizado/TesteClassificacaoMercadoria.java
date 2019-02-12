@@ -2,6 +2,7 @@ package br.com.senaigo.clientesandubas.testeatualizado;
 
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.Scanner;
 
 import org.springframework.http.HttpMethod;
 
@@ -16,10 +17,18 @@ public class TesteClassificacaoMercadoria {
 	
 	public static void main(String[] args) {
 		try {
+			Scanner leia = new Scanner(System.in);
+			ClassificacaoMercadoria x = new ClassificacaoMercadoria("teste nome", "teste descrição");
 			findAll();
 			findById("3");
+			newObject(x);
 			findAll();
+			x.setNome("teste update");
+			update(x);
 			findAll();
+			System.out.println("\n\nQual ID deseja deletar?");
+			deleteById(leia.next());
+			leia.close();
 			findAll();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -12,7 +12,10 @@ public class ClassificacaoMercadoria {
 
 	public ClassificacaoMercadoria() {}
 	public ClassificacaoMercadoria(Long id, String nome, String descricao) {
+		this(nome, descricao);
 		this.id = id;
+	}
+	public ClassificacaoMercadoria(String nome, String descricao) {
 		this.nome = nome;
 		this.descricao = descricao;
 	}
